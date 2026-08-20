@@ -1,0 +1,28 @@
+<Project>
+
+  <!--
+    Reference roots for the Foggy build on this machine.
+
+    GAME_MANAGED  - the decompiled game's exported DLL set (reference-only).
+    BEPINEX_CORE  - BepInEx core assemblies.
+    HSRTIMER_DIR  - the HSRTimer repository; its build output (same
+                    Configuration as this build) provides HSRTimer.dll, the
+                    extension API this plugin compiles against. Build HSRTimer
+                    first: `dotnet build src/HSRTimer/HSRTimer.csproj`.
+
+    Override any of them from the environment before `dotnet build`.
+  -->
+
+  <PropertyGroup Condition=" '$(GAME_MANAGED)' == '' ">
+    <GAME_MANAGED>$(HOME)/dev/HFF/Human_Fall_Flat/dlls</GAME_MANAGED>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(BEPINEX_CORE)' == '' ">
+    <BEPINEX_CORE>$(HOME)/dev/TwilightCup/tools/bepinex-core</BEPINEX_CORE>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(HSRTIMER_DIR)' == '' ">
+    <HSRTIMER_DIR>$(HOME)/dev/HFF/HSRTimer</HSRTIMER_DIR>
+  </PropertyGroup>
+
+</Project>
