@@ -60,8 +60,7 @@ namespace Foggy
 
         private static bool TagStillEnabled()
         {
-            var cfg = HSRTimer.ConfigService.Instance;
-            return cfg != null && cfg.EnabledTags.HasTag(FoggyRule.TagId);
+            return TimerIntegration.IsTagEnabled(FoggyRuleCore.TagId);
         }
 
         /// <summary>
