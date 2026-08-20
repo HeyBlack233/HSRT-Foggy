@@ -3,12 +3,15 @@
   <!--
     Reference roots for the Foggy build on this machine.
 
-    GAME_MANAGED  - the decompiled game's exported DLL set (reference-only).
-    BEPINEX_CORE  - BepInEx core assemblies.
-    HSRTIMER_DIR  - the HSRTimer repository; its build output (same
-                    Configuration as this build) provides HSRTimer.dll, the
-                    extension API this plugin compiles against. Build HSRTimer
-                    first: `dotnet build src/HSRTimer/HSRTimer.csproj`.
+    GAME_MANAGED     - the decompiled game's exported DLL set (reference-only).
+    BEPINEX_CORE     - BepInEx core assemblies.
+    HSRTIMER_DIR     - the HSRTimer repository; its build output (same
+                       Configuration as this build) provides HSRTimer.dll.
+    TWILIGHTTIMER_DIR - the TwilightTimer repository (HSRTimer's fork); its
+                       build output provides TwilightTimer.dll. Both timers'
+                       extension APIs are compiled against side by side; at
+                       runtime the plugin binds to whichever fork is installed.
+                       Build each first: `dotnet build src/<Timer>/<Timer>.csproj`.
 
     Override any of them from the environment before `dotnet build`.
   -->
@@ -23,6 +26,10 @@
 
   <PropertyGroup Condition=" '$(HSRTIMER_DIR)' == '' ">
     <HSRTIMER_DIR>$(HOME)/dev/HFF/HSRTimer</HSRTIMER_DIR>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TWILIGHTTIMER_DIR)' == '' ">
+    <TWILIGHTTIMER_DIR>$(HOME)/dev/TwilightCup/CSharp/TwilightTimer</TWILIGHTTIMER_DIR>
   </PropertyGroup>
 
 </Project>

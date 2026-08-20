@@ -43,10 +43,17 @@
     </Reference>
   </ItemGroup>
 
-  <!-- HSRTimer extension API (build HSRTimer first, same Configuration) -->
+  <!-- Timer extension APIs: HSRTimer and its TwilightTimer fork (build each
+       first, same Configuration). Referenced side by side — the namespaces
+       differ, so the types never collide; at runtime only the installed
+       fork's types are ever touched (see TimerBridges.cs). -->
   <ItemGroup>
     <Reference Include="HSRTimer">
       <HintPath>$(HSRTIMER_DIR)/src/HSRTimer/bin/$(Configuration)/netstandard2.0/HSRTimer.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TwilightTimer">
+      <HintPath>$(TWILIGHTTIMER_DIR)/src/TwilightTimer/bin/$(Configuration)/netstandard2.0/TwilightTimer.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>
